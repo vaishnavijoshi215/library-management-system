@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Library Management System</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(120deg, #89f7fe, #66a6ff);
+        min-height: 100vh;
+    }
+
+    h1 {
+        text-align: center;
+        color: white;
+        padding: 20px;
+        letter-spacing: 1px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        background: white;
+        padding: 25px;
+        width: 350px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .card h2 {
+        text-align: center;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        outline: none;
+    }
+
+    input:focus {
+        border-color: #66a6ff;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background: #66a6ff;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background: #558de8;
+    }
+
+    table {
+        width: 90%;
+        margin: 30px auto;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    th {
+        background: #66a6ff;
+        color: white;
+        padding: 12px;
+    }
+
+    td {
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {
+        background: #f1f7ff;
+    }
+
+    footer {
+        text-align: center;
+        color: white;
+        padding: 10px;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>📚 Library Management System</h1>
+
+<div class="container">
+    <div class="card">
+        <h2>Add Book</h2>
+        <input type="text" id="id" placeholder="Book ID">
+        <input type="text" id="name" placeholder="Book Name">
+        <input type="text" id="author" placeholder="Author Name">
+        <input type="text" id="student" placeholder="Student Name">
+        <input type="number" id="price" placeholder="Price">
+        <input type="number" id="pages" placeholder="Pages">
+        <button onclick="addBook()">Add Book</button>
+    </div>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Student</th>
+            <th>Price</th>
+            <th>Pages</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+
+<footer>
+    © 2025 Library Management System | Designed by Student
+</footer>
+
+<script>
+    function addBook() {
+        let id = document.getElementById("id").value;
+        let name = document.getElementById("name").value;
+        let author = document.getElementById("author").value;
+        let student = document.getElementById("student").value;
+        let price = document.getElementById("price").value;
+        let pages = document.getElementById("pages").value;
+
+        if (id === "" || name === "") {
+            alert("Book ID and Name are required!");
+            return;
+        }
+
+        let table = document.getElementById("tableBody");
+        let row = table.insertRow();
+
+        row.insertCell(0).innerText = id;
+        row.insertCell(1).innerText = name;
+        row.insertCell(2).innerText = author;
+        row.insertCell(3).innerText = student;
+        row.insertCell(4).innerText = price;
+        row.insertCell(5).innerText = pages;
+
+        document.querySelectorAll("input").forEach(i => i.value = "");
+    }
+</script>
+
+</body>
+</html>
